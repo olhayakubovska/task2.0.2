@@ -37,18 +37,12 @@ app.get("/", async (req, res) => {
   res.render("index", {
     text: "Home",
     notes: await getNotes(),
-    flag: false,
   });
 });
 
 app.post("/", async (req, res) => {
   await addNote(req.body.title);
 
-  // res.render("index", {
-  //   title: "app",
-  //   notes: await getNotes(),
-  //   flag: true,
-  // });
   res.redirect("/");
 });
 
@@ -57,7 +51,6 @@ app.delete("/:id", async (req, res) => {
   res.render("index", {
     text: "delete",
     notes: await getNotes(),
-    flag: false,
   });
 });
 
@@ -66,10 +59,7 @@ app.put("/:id", async (req, res) => {
   res.render("index", {
     text: "updated app",
     notes: newNotes,
-    flag: true,
   });
-  // res.redirect("/");
-
 });
 
 app.listen(port, () => {

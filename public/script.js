@@ -39,7 +39,6 @@ document.addEventListener("click", async (event) => {
 });
 
 const update = async (id, newNote) => {
-  console.log(id, newNote, "fetch");
 
   const response = await fetch(`/${id}`, {
     method: "PUT",
