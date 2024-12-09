@@ -1,19 +1,14 @@
-document.addEventListener("click", (event) => {
+document.addEventListener("click", async (event) => {
   if (event.target.dataset.type === "remove") {
     const id = event.target.dataset.id;
-    remove(id).then(() => {
-      //   const title = document.querySelector(".title");
-      //   title.innerHTML = "";
-      //   title.innerHTML = `
-      //   <div>Delete</div>
-      // `;
-      const title = document.querySelector(".title");
-      title.innerHTML = "";
+    await remove(id);
 
-      title.innerHTML = `<div>Delete</div>`;
+    const title = document.querySelector(".title");
+    title.innerHTML = "";
 
-      event.target.closest("li").remove();
-    });
+    title.innerHTML = `<div class="title">Delete</div>`;
+
+    event.target.closest("li").remove();
   }
 });
 
@@ -38,7 +33,7 @@ document.addEventListener("click", async (event) => {
       const title = document.querySelector(".title");
       title.innerHTML = "";
 
-      title.innerHTML = `<div>Update</div>`;
+      title.innerHTML = `<div class="title">Update</div>`;
     }
   }
 });
@@ -56,7 +51,7 @@ const update = async (id, newNote) => {
     }),
   });
   if (!response.ok) {
-    console.error("Server responded with an error!!!!!", response.status);
+    console.error("Server responded with an error!", response.status);
     return;
   }
 };

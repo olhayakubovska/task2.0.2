@@ -7,34 +7,32 @@
     <title>Node Simple Server</title>
   </head>
   <body>
-    <p>This is working</p>
-    <% if (flag) { %>
-    <p class="flag">Flag is true!</p>
-    <% } %>
+    <div class="container">
 
     <div class="title"><%= text %></div>
 
-    <form action="/" method="post" id="noteForm">
+    <form action="/" method="post" id="noteForm" class="note-form" placeholder="Add note...">
       <input type="text" name="title" required />
-      <button type="submit">Add Note</button>
+      <button type="submit" class="note-submit">Add Note</button>
     </form>
 
     <% if (notes.length) { %>
     <ul class="notes">
       <% notes.forEach((item) => { %>
-      <li>
+      <li class="note-item">
         <span><%= item.title %></span>
-        <button data-type="remove" data-id="<%= item.id %>">&times;</button>
-        <button data-type="update"  data-id="<%= item.id %>" data-title="<%= item.title%>">
+        <div>
+        <button data-type="remove" data-id="<%= item.id %>" class="note-button note-remove">&times;</button>
+        <button data-type="update"  data-id="<%= item.id %>" data-title="<%= item.title%>"  class="note-button note-edit">
           Edit
-        </button>
+        </button></div>
       </li>
       <% }) %>
     </ul>
     <% } else { %>
-    <p>No notes!</p>
+    <p class="no-notes">No notes!</p>
     <% } %>
-
+    </div>
     <script src="/script.js"></script>
   </body>
 </html>
